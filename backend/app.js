@@ -22,7 +22,6 @@ app.use(express.json())
 const employeesRouter = require('./routers/employeesController')
 app.use('/api/employees',employeesRouter)
 
-
 //Starting our express web server on port 9000
 app.listen(9000,() => {
  console.log('Server started ...')
