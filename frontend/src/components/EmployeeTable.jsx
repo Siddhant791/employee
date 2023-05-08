@@ -1,20 +1,11 @@
 import "./employeeTable.css";
 
-const EmployeeTable = ({
-  employees,
-  setEmployees,
-  setIsCreateNew,
-  setEditId,
-}) => {
+const EmployeeTable = ({ employees, setEmployees, setEditId }) => {
   const handleDelete = (empId) => {
     const newEmployees = employees.filter((emp) => {
       return emp.id !== empId;
     });
     setEmployees(newEmployees);
-  };
-
-  const handleNew = () => {
-    setIsCreateNew(true);
   };
 
   const handleEdit = (empId) => {
@@ -24,11 +15,6 @@ const EmployeeTable = ({
   return (
     <div className="empTable">
       <table>
-        <caption>
-          <img height="50px" width="50px" src="././favicon.ico" alt="logo" /> &nbsp;
-          Manage Employees &nbsp;
-          <button onClick={handleNew}>Create New Employee</button>
-        </caption>
         <thead>
           <tr>
             <th> Name </th>

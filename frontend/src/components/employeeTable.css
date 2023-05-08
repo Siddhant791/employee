@@ -1,11 +1,11 @@
 .empTable {
   background-color: aliceblue;
-  margin: auto;
-  display: flex;
+  overflow-y: scroll;
+  max-height: 700px;
 }
 
 img {
-    margin-bottom: -13px;
+  margin-bottom: -13px;
 }
 
 thead th:nth-child(1) {
@@ -50,18 +50,11 @@ table {
   width: 100%;
   border-collapse: collapse;
 }
-caption {
-  background-color: #3630a3;
-  color: white;
-  padding: 25px;
-  font-size: x-large;
-  font-weight: 500;
-}
 
 button {
-     background-color: dodgerblue;
-    color: #fff;
-    padding: 7px 12px;
-    border-radius:10px;
-    cursor: pointer;
+  background-color: dodgerblue;
+  color: #fff;
+  padding: 7px 12px;
+  border-radius: 10px;
+  cursor: pointer;
 }

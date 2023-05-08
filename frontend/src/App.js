@@ -1,6 +1,7 @@
 import CreateEmployee from "./components/CreateEmployee";
 import EmployeeTable from "./components/EmployeeTable";
 import EditEmployee from "./components/EditEmployee";
+import AppHeader from "./components/AppHeader";
 import "./App.css";
 import { useEffect, useState } from "react";
 
@@ -12,7 +13,7 @@ function App() {
   const [editId, setEditId] = useState(null);
 
   useEffect(() => {
-    async function fetchData() {
+    const fetchData = async () => {
       try {
         const response = await fetch("https://dummyjson.com/users");
         const data = await response.json();
@@ -22,7 +23,7 @@ function App() {
         setError(err);
         setLoading(false);
       }
-    }
+    };
     fetchData();
   }, []);
 
@@ -50,13 +51,16 @@ function App() {
           editId={editId}
         />
       ) : (
-        <EmployeeTable
-          employees={employees}
-          setEmployees={setEmployees}
-          isCreateNew={isCreateNew}
-          setIsCreateNew={setIsCreateNew}
-          setEditId={setEditId}
-        />
+        <>
+          <AppHeader setIsCreateNew={setIsCreateNew} />
+          <EmployeeTable
+            employees={employees}
+            setEmployees={setEmployees}
+            isCreateNew={isCreateNew}
+            setIsCreateNew={setIsCreateNew}
+            setEditId={setEditId}
+          />
+        </>
       )}
     </div>
   );
