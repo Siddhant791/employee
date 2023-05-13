@@ -15,9 +15,9 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("https://dummyjson.com/users");
+        const response = await fetch("http://localhost:9000/api/employees");
         const data = await response.json();
-        setEmployees(data.users);
+        setEmployees(data);
         setLoading(false);
       } catch (err) {
         setError(err);
@@ -55,7 +55,7 @@ function App() {
           <AppHeader setIsCreateNew={setIsCreateNew} />
           <EmployeeTable
             employees={employees}
-            setEmployees={setEmployees}
+            fetchData={() => fetchData}
             isCreateNew={isCreateNew}
             setIsCreateNew={setIsCreateNew}
             setEditId={setEditId}

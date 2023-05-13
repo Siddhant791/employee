@@ -1,23 +1,39 @@
 import { useState } from "react";
 import "./createEmployee.css";
 
-const CreateEmployee = ({ employees, setEmployees, setIsCreateNew }) => {
+const CreateEmployee = ({ employees, fetchData, setIsCreateNew }) => {
   const [newFirstName, setNewFirstName] = useState("");
   const [newLastName, setNewLastName] = useState("");
   const [newAge, setNewAge] = useState("");
 
-  const handleSubmit = () => {
+  const handleSubmit = async() => {
     const newId =
       employees.length > 0 ? employees[employees.length - 1].id + 1 : 0;
-    setEmployees([
-      ...employees,
-      {
+
+      const formData =  {
         id: newId,
-        firstName: newFirstName,
-        lastName: newLastName,
+        firstname: newFirstName,
+        lastname: newLastName,
         age: newAge,
+      }
+try{
+  const res = await  fetch('http://localhost:9000/api/employees', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
       },
-    ]);
+      body: JSON.stringify(formData),
+    });
+  
+          if (res.ok) {
+        // Fetch data again in MyComponent
+        fetchData();
+      }
+    } catch (err){
+      console.log(err);
+    }
+    
+
     setIsCreateNew(false);
   };
 

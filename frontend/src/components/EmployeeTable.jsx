@@ -27,7 +27,7 @@ const EmployeeTable = ({ employees, setEmployees, setEditId }) => {
             return (
               <tbody key={emp.id}>
                 <tr>
-                  <td>{emp.firstName + " " + emp.lastName}</td>
+                  <td>{emp.firstname + " " + emp.lastname}</td>
                   <td>{emp.age}</td>
                   <td>
                     <>
