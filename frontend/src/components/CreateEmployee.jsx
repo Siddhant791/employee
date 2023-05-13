@@ -1,4 +1,6 @@
+import React from "react";
 import { useState } from "react";
+import {useNavigate} from "react-router-dom"
 import "./createEmployee.css";
 
 const CreateEmployee = ({ employees, setEmployees, setIsCreateNew }) => {
@@ -6,19 +8,11 @@ const CreateEmployee = ({ employees, setEmployees, setIsCreateNew }) => {
   const [newLastName, setNewLastName] = useState("");
   const [newAge, setNewAge] = useState("");
 
+  const navigate = useNavigate();
+
   const handleSubmit = () => {
-    const newId =
-      employees.length > 0 ? employees[employees.length - 1].id + 1 : 0;
-    setEmployees([
-      ...employees,
-      {
-        id: newId,
-        firstName: newFirstName,
-        lastName: newLastName,
-        age: newAge,
-      },
-    ]);
-    setIsCreateNew(false);
+
+    navigate(-1);
   };
 
   return (
@@ -50,7 +44,7 @@ const CreateEmployee = ({ employees, setEmployees, setIsCreateNew }) => {
       >
         Submit
       </button>
-      <button onClick={() => setIsCreateNew(false)}>Cancel</button>
+      <button onClick={() => { navigate(-1); }}>Cancel</button>
     </div>
   );
 };

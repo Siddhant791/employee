@@ -1,28 +1,32 @@
+import React from "react";
 import { useState } from "react";
 import "./createEmployee.css";
+import {useNavigate} from "react-router-dom";
 
-const EditEmployee = ({ employees, setEmployees, setEditId, editId }) => {
+const EditEmployee = () => {
   const [newFirstName, setNewFirstName] = useState("");
   const [newLastName, setNewLastName] = useState("");
   const [newAge, setNewAge] = useState("");
 
+  const navigate = useNavigate();
+
   const handleSubmit = () => {
-    const newEmployees = employees.map((emp) => {
-      if (emp.id === editId)
-        return {
-          ...emp,
-          firstName: newFirstName,
-          lastName: newLastName,
-          age: newAge,
-        };
-      return emp;
-    });
-    setEmployees(newEmployees);
-    setEditId(null);
+    // const newEmployees = employees.map((emp) => {
+    //   if (emp.id === editId)
+    //     return {
+    //       ...emp,
+    //       firstName: newFirstName,
+    //       lastName: newLastName,
+    //       age: newAge,
+    //     };
+    //   return emp;
+    // });
+    // setEmployees(newEmployees);
+    navigate(-1);
   };
 
   const handleCancel = () => {
-    setEditId(null);
+    navigate(-1)
   };
 
   return (

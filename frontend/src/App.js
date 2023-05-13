@@ -1,3 +1,4 @@
+import React from "react";
 import CreateEmployee from "./components/CreateEmployee";
 import EmployeeTable from "./components/EmployeeTable";
 import EditEmployee from "./components/EditEmployee";
@@ -37,31 +38,16 @@ function App() {
 
   return (
     <div className="App">
-      {isCreateNew ? (
-        <CreateEmployee
+      <>
+        <AppHeader setIsCreateNew={setIsCreateNew} />
+        <EmployeeTable
           employees={employees}
           setEmployees={setEmployees}
+          isCreateNew={isCreateNew}
           setIsCreateNew={setIsCreateNew}
-        />
-      ) : editId ? (
-        <EditEmployee
-          employees={employees}
-          setEmployees={setEmployees}
           setEditId={setEditId}
-          editId={editId}
         />
-      ) : (
-        <>
-          <AppHeader setIsCreateNew={setIsCreateNew} />
-          <EmployeeTable
-            employees={employees}
-            setEmployees={setEmployees}
-            isCreateNew={isCreateNew}
-            setIsCreateNew={setIsCreateNew}
-            setEditId={setEditId}
-          />
-        </>
-      )}
+      </>
     </div>
   );
 }
