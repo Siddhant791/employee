@@ -1,6 +1,10 @@
+import React from "react";
 import "./employeeTable.css";
+import {useNavigate} from "react-router-dom"
 
 const EmployeeTable = ({ employees, setEmployees, setEditId }) => {
+const navigate = useNavigate();
+
   const handleDelete = (empId) => {
     const newEmployees = employees.filter((emp) => {
       return emp.id !== empId;
@@ -9,7 +13,7 @@ const EmployeeTable = ({ employees, setEmployees, setEditId }) => {
   };
 
   const handleEdit = (empId) => {
-    setEditId(empId);
+    navigate("/editEmployee");
   };
 
   return (

@@ -1,8 +1,14 @@
+import React from "react";
 import "../components/AppHeader.css"
+import {useNavigate} from "react-router-dom";
 
 const AppHeader = ({setIsCreateNew}) => {
+
+  const navigate = useNavigate();
+
   const handleNew = () => {
     setIsCreateNew(true);
+    navigate("/createEmployee");
   };
     return (
          <div className="appHeader">
